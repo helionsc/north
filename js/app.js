@@ -14,6 +14,8 @@ const ICONS = {
   chevronLeft: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 6 9 12 15 18"/></svg>`,
   sun: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.2"/><line x1="12" y1="2.5" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="21.5"/><line x1="2.5" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="21.5" y2="12"/><line x1="5.1" y1="5.1" x2="6.8" y2="6.8"/><line x1="17.2" y1="17.2" x2="18.9" y2="18.9"/><line x1="5.1" y1="18.9" x2="6.8" y2="17.2"/><line x1="17.2" y1="6.8" x2="18.9" y2="5.1"/></svg>`,
   moon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a6.8 6.8 0 0 0 10.5 10.5Z"/></svg>`,
+  mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M4 7l7.4 6a1 1 0 0 0 1.2 0L20 7"/></svg>`,
+  arrowRight: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"/><polyline points="13 5 20 12 13 19"/></svg>`,
 };
 
 const PRODUTOS = [
@@ -93,10 +95,20 @@ const PRODUTOS = [
 
 function render() {
   const hash = window.location.hash.replace('#', '');
-  const produto = PRODUTOS.find(p => p.id === hash);
   const home = document.getElementById('view-home');
   const detail = document.getElementById('view-detail');
 
+  if (hash === 'contato') {
+    detail.innerHTML = renderContato();
+    home.classList.remove('active');
+    detail.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+    setupReveal(detail);
+    setupContatoForm();
+    return;
+  }
+
+  const produto = PRODUTOS.find(p => p.id === hash);
   if (produto) {
     detail.innerHTML = renderDetail(produto);
     home.classList.remove('active');
@@ -139,11 +151,16 @@ function renderHome() {
         <div class="ring-outer"></div>
         <div class="ring"></div>
         <div class="ring-inner"></div>
-        <img src="assets/logo.png" alt="Northn" class="logo-mark">
+        <svg class="logo-mark" viewBox="0 0 70 62" aria-label="Northn">
+          <path fill="url(#northnGrad)" d="M38.6,4.1 L31.5,4.0 L4.0,52.5 L6.3,57.8 L14.8,56.6 L39.9,11.4 Z"/>
+          <path fill="url(#northnGrad)" d="M41.3,16.1 L38.0,21.5 L37.9,26.1 L55.0,57.6 L62.6,57.8 L65.0,52.8 L44.6,16.0 Z"/>
+          <path fill="url(#northnGrad)" d="M21.9,56.1 L23.8,58.0 L45.1,58.0 L47.7,54.4 L44.4,48.0 L26.8,46.9 L24.1,49.3 Z"/>
+        </svg>
       </div>
       <div class="eyebrow-word">Northn Software</div>
       <h1>Direção inteligente.<br><span class="grad">Resultados reais.</span></h1>
       <p class="sub">Um núcleo, seis produtos. Cada um resolve uma parte real da operação — do pedido ao caixa, do time ao painel de indicadores.</p>
+      <a href="#contato" class="cta-btn">${ICONS.mail} Falar com a gente</a>
     </div>
 
     <div style="width:100%;max-width:760px;">
@@ -196,6 +213,117 @@ function renderDetail(p) {
   `;
 }
 
+function renderContato() {
+  return `
+    <a href="#" class="back-btn glass">${ICONS.chevronLeft} Voltar</a>
+    <div class="detail" style="max-width:440px;">
+      <div class="detail-icon">${ICONS.mail}</div>
+      <div class="detail-code">Fale com a gente</div>
+      <h2>Vamos conversar</h2>
+      <p class="desc" style="margin-bottom:8px;">Conte um pouco sobre o que você precisa — a gente responde rapidinho.</p>
+
+      <form class="contact-form reveal" id="contatoForm" novalidate style="margin-top:28px;">
+        <div class="field" data-field="nome">
+          <label for="ctNome">Nome</label>
+          <input type="text" id="ctNome" name="nome" placeholder="Seu nome" autocomplete="name">
+          <span class="field-error-msg">Digite seu nome.</span>
+        </div>
+        <div class="field" data-field="email">
+          <label for="ctEmail">E-mail</label>
+          <input type="email" id="ctEmail" name="email" placeholder="voce@email.com" autocomplete="email">
+          <span class="field-error-msg">Digite um e-mail válido.</span>
+        </div>
+        <div class="field" data-field="telefone">
+          <label for="ctTelefone">Telefone</label>
+          <input type="tel" id="ctTelefone" name="telefone" placeholder="(00) 00000-0000" autocomplete="tel" inputmode="numeric" maxlength="16">
+          <span class="field-error-msg">Digite um telefone válido.</span>
+        </div>
+        <div class="field" data-field="mensagem">
+          <label for="ctMensagem">Mensagem</label>
+          <textarea id="ctMensagem" name="mensagem" placeholder="Como podemos ajudar?"></textarea>
+        </div>
+
+        <button type="submit" class="btn-load" id="ctSubmitBtn">
+          <span class="fill"></span>
+          <span class="btn-label" id="ctLabel">Enviar</span>
+          <span class="btn-check">${ICONS.check}</span>
+        </button>
+        <p class="form-note" id="ctNote">Protótipo de demonstração — nenhum dado é enviado de verdade.</p>
+      </form>
+    </div>
+  `;
+}
+
+function maskTelefone(valor) {
+  const d = valor.replace(/\D/g, '').slice(0, 11);
+  if (d.length === 0) return '';
+  if (d.length <= 2) return `(${d}`;
+  if (d.length <= 6) return `(${d.slice(0, 2)}) ${d.slice(2)}`;
+  if (d.length <= 10) return `(${d.slice(0, 2)}) ${d.slice(2, 6)}-${d.slice(6)}`;
+  return `(${d.slice(0, 2)}) ${d.slice(2, 7)}-${d.slice(7)}`;
+}
+
+function setupContatoForm() {
+  const form = document.getElementById('contatoForm');
+  if (!form) return;
+  const btn = document.getElementById('ctSubmitBtn');
+  const label = document.getElementById('ctLabel');
+  const note = document.getElementById('ctNote');
+  const telInput = document.getElementById('ctTelefone');
+
+  telInput.addEventListener('input', () => {
+    telInput.value = maskTelefone(telInput.value);
+  });
+
+  function setErro(campo, temErro, mensagemCustom) {
+    const field = form.querySelector(`[data-field="${campo}"]`);
+    if (!field) return;
+    field.classList.toggle('error', temErro);
+    if (temErro && mensagemCustom) field.querySelector('.field-error-msg').textContent = mensagemCustom;
+  }
+
+  form.querySelectorAll('input').forEach(inp => {
+    inp.addEventListener('input', () => setErro(inp.name, false));
+  });
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (btn.classList.contains('is-loading') || btn.classList.contains('is-success')) return;
+
+    const nome = form.nome.value.trim();
+    const email = form.email.value.trim();
+    const telefone = form.telefone.value.trim();
+
+    const nomeOk = nome.length >= 2;
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    const telefoneOk = telefone.replace(/\D/g, '').length >= 8;
+
+    setErro('nome', !nomeOk);
+    setErro('email', !emailOk);
+    setErro('telefone', !telefoneOk);
+
+    if (!nomeOk || !emailOk || !telefoneOk) {
+      const primeiroErro = form.querySelector('.field.error input');
+      if (primeiroErro) primeiroErro.focus();
+      return;
+    }
+
+    btn.classList.add('is-loading');
+    btn.disabled = true;
+    label.innerHTML = `<span class="btn-load-spinner"></span> Enviando...`;
+
+    setTimeout(() => {
+      btn.classList.remove('is-loading');
+      btn.classList.add('is-success');
+      form.querySelectorAll('input, textarea').forEach(el => el.disabled = true);
+      if (note) {
+        note.textContent = 'Mensagem enviada! Em breve alguém da equipe entra em contato.';
+        note.classList.add('is-success');
+      }
+    }, 1500);
+  });
+}
+
 document.getElementById('view-home').innerHTML = renderHome();
 window.addEventListener('hashchange', render);
 render();
@@ -218,9 +346,8 @@ render();
     btnLight.classList.toggle('is-active', tema === 'light');
   }
 
-  // Preferência do sistema como ponto de partida (sem persistir entre sessões)
-  const prefereClaro = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
-  aplicar(prefereClaro ? 'light' : 'dark');
+  // Tema claro como padrão
+  aplicar('light');
 
   btnDark.addEventListener('click', () => aplicar('dark'));
   btnLight.addEventListener('click', () => aplicar('light'));
