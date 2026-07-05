@@ -197,7 +197,7 @@ function renderDetail(p) {
       <h2>${p.nome}</h2>
       <p class="tagline">${p.tagline}</p>
       <p class="desc">${p.descricao}</p>
-      ${p.demoUrl ? `<a href="${p.demoUrl}" target="_blank" rel="noopener" class="cta-btn" style="margin:8px 0 4px;">${ICONS.arrowRight} Ver demonstração ao vivo</a>` : ''}
+      ${p.demoUrl ? `<a href="${p.demoUrl}" target="_blank" rel="noopener" class="cta-btn" style="margin:16px 0 48px;">${ICONS.arrowRight} Ver demonstração ao vivo</a>` : ''}
 
       <div class="features">
         ${p.features.map(f => `
