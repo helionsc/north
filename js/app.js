@@ -25,6 +25,7 @@ const PRODUTOS = [
     resumo: 'Cardápio digital e pedidos, do link à cozinha.',
     tagline: 'O cardápio que também administra o pedido.',
     descricao: 'Cada loja tem seu próprio cardápio digital, com identidade visual própria e um painel completo para gerenciar produtos, categorias, horários e pedidos — do primeiro clique do cliente até a confirmação na cozinha.',
+    demoUrl: 'https://cardapio-digital-seven-black.vercel.app',
     features: [
       { t: 'Cardápio por loja', d: 'Identidade visual, categorias e produtos configuráveis por estabelecimento.' },
       { t: 'Pedidos em tempo real', d: 'O pedido chega instantaneamente no painel de quem está operando.' },
@@ -58,13 +59,14 @@ const PRODUTOS = [
   {
     id: 'rh', codigo: 'RH',
     nome: 'Northn RH',
-    resumo: 'Gestão de pessoas, da admissão ao desempenho.',
-    tagline: 'Um lugar só para cuidar de quem faz a operação acontecer.',
-    descricao: 'Centraliza admissão, ponto e avaliações de desempenho, dando ao time de gestão uma visão clara de cada pessoa e do time como um todo.',
+    resumo: 'Ponto digital e banco de horas, sem planilha paralela.',
+    tagline: 'Ponto, banco de horas e solicitações em um só lugar.',
+    descricao: 'Cada empresa tem seu painel de gestor e seu link de ponto para a equipe. O colaborador bate o ponto pelo celular com geolocalização, acompanha o próprio banco de horas e solicita férias, folga ou atestado — tudo aprovado pelo gestor em um painel só.',
+    demoUrl: 'https://rh-digital-alpha.vercel.app',
     features: [
-      { t: 'Admissão simplificada', d: 'Documentos e dados do colaborador em um fluxo único.' },
-      { t: 'Ponto digital', d: 'Registro de jornada sem planilha paralela.' },
-      { t: 'Avaliações de desempenho', d: 'Acompanhamento contínuo, não só uma vez por ano.' },
+      { t: 'Ponto pelo celular', d: 'As 4 marcações do dia, com geolocalização em cada uma.' },
+      { t: 'Banco de horas configurável', d: 'Extrato mês a mês, saldo acumulado e a política — compensar em folga ou pagar hora extra — decidida pela empresa.' },
+      { t: 'Solicitações e ajustes', d: 'Férias, folga e atestado com aprovação do gestor; esqueceu de bater o ponto, pede o ajuste pelo app.' },
     ],
   },
   {
@@ -194,6 +196,7 @@ function renderDetail(p) {
       <h2>${p.nome}</h2>
       <p class="tagline">${p.tagline}</p>
       <p class="desc">${p.descricao}</p>
+      ${p.demoUrl ? `<a href="${p.demoUrl}" target="_blank" rel="noopener" class="cta-btn" style="margin:8px 0 4px;">${ICONS.arrowRight} Ver demonstração ao vivo</a>` : ''}
 
       <div class="features">
         ${p.features.map(f => `
