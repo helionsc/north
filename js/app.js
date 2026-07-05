@@ -146,6 +146,18 @@ function setupReveal(scope) {
   });
 }
 
+const SEGMENTOS = [
+  { produtoId: 'menu', titulo: 'Alimentação & Delivery', desc: 'Cardápio digital com pedido e gestão pra restaurantes e delivery.' },
+  { produtoId: 'rh', titulo: 'Operações & Pessoas', desc: 'Ponto, banco de horas e solicitações pra times que saíram da planilha.' },
+  { produtoId: 'forms', titulo: 'Captação & Eventos', desc: 'Formulários de inscrição e captação, animados e no ar em minutos.' },
+];
+
+const PROCESSO = [
+  { n: '01', t: 'Descoberta rápida', d: 'Entendemos o problema real da operação — sem burocracia, sem semanas de reunião.' },
+  { n: '02', t: 'Protótipo funcional', d: 'Em dias, não meses: algo que já roda de verdade e pode ser testado.' },
+  { n: '03', t: 'Evolução direta', d: 'Você fala direto com quem constrói — sem camadas de gerência no meio.' },
+];
+
 function renderHome() {
   return `
     <div class="hero" id="hero">
@@ -162,7 +174,7 @@ function renderHome() {
       </div>
       <div class="eyebrow-word">Northn Software</div>
       <h1>Direção inteligente.<br><span class="grad">Resultados reais.</span></h1>
-      <p class="sub">Um núcleo, seis produtos. Cada um resolve uma parte real da operação — do pedido ao caixa, do time ao painel de indicadores.</p>
+      <p class="sub">Um núcleo, uma suíte em construção — já são 3 produtos reais em produção, cada um resolvendo uma parte real da operação.</p>
       <a href="#contato" class="cta-btn">${ICONS.mail} Falar com a gente</a>
     </div>
 
@@ -178,6 +190,44 @@ function renderHome() {
           </a>
         `).join('')}
       </div>
+    </div>
+
+    <div class="credibility reveal">
+      <div class="stat"><div class="num">3</div><div class="lbl">produtos reais em produção</div></div>
+      <div class="stat"><div class="num">100%</div><div class="lbl">multi-tenant desde o primeiro dia</div></div>
+      <div class="stat"><div class="num">24/7</div><div class="lbl">produtos no ar, sempre disponíveis</div></div>
+    </div>
+
+    <div style="width:100%;max-width:760px;">
+      <div class="grid-label">Segmentos que já atendemos</div>
+      <div class="segments-grid">
+        ${SEGMENTOS.map(s => `
+          <a href="#${s.produtoId}" class="segment-card reveal">
+            <div class="seg-icon">${ICONS[s.produtoId]}</div>
+            <h4>${s.titulo}</h4>
+            <p>${s.desc}</p>
+          </a>
+        `).join('')}
+      </div>
+    </div>
+
+    <div style="width:100%;max-width:760px;">
+      <div class="grid-label">Como trabalhamos</div>
+      <div class="process">
+        ${PROCESSO.map(p => `
+          <div class="process-step reveal">
+            <div class="step-n">${p.n}</div>
+            <h4>${p.t}</h4>
+            <p>${p.d}</p>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <div class="cta-banner reveal">
+      <h3>Pronto pra tirar sua operação da planilha?</h3>
+      <p>Conta um pouco do seu desafio — a gente responde rapidinho, sem enrolação.</p>
+      <a href="#contato" class="cta-btn">${ICONS.mail} Falar com a gente</a>
     </div>
 
     <div class="values">
@@ -329,6 +379,7 @@ function setupContatoForm() {
 }
 
 document.getElementById('view-home').innerHTML = renderHome();
+setupReveal(document.getElementById('view-home'));
 window.addEventListener('hashchange', render);
 render();
 
