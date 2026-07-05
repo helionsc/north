@@ -50,6 +50,7 @@ const PRODUTOS = [
     resumo: 'Formulários bonitos e animados, sem escrever código.',
     tagline: 'Monte, personalize e publique — em minutos.',
     descricao: 'Um construtor visual: escolha as cores, o logo e os textos, monte as perguntas (texto, e-mail, múltipla escolha, caixas de seleção e mais) e marque o que é obrigatório. A pré-visualização já mostra o formulário animado pronto, e o resultado sai como uma página única para publicar em qualquer lugar.',
+    demoUrl: 'https://northn-forms.vercel.app',
     features: [
       { t: 'Marca personalizável', d: 'Cores, logo e textos do formulário sob controle de quem está montando.' },
       { t: 'Perguntas flexíveis', d: 'Texto, e-mail, telefone, múltipla escolha, caixas de seleção ou lista — cada uma podendo ser obrigatória ou não.' },
