@@ -47,13 +47,13 @@ const PRODUTOS = [
   {
     id: 'forms', codigo: 'FR',
     nome: 'Northn Forms',
-    resumo: 'Formulários inteligentes para captar dados e leads.',
-    tagline: 'Do formulário à resposta, sem fricção.',
-    descricao: 'Monte formulários personalizados para captar pedidos, leads ou respostas internas, com lógica condicional e envio direto para quem precisa agir sobre aquele dado.',
+    resumo: 'Formulários bonitos e animados, sem escrever código.',
+    tagline: 'Monte, personalize e publique — em minutos.',
+    descricao: 'Um construtor visual: escolha as cores, o logo e os textos, monte as perguntas (texto, e-mail, múltipla escolha, caixas de seleção e mais) e marque o que é obrigatório. A pré-visualização já mostra o formulário animado pronto, e o resultado sai como uma página única para publicar em qualquer lugar.',
     features: [
-      { t: 'Construção sem código', d: 'Monte e publique um formulário em minutos.' },
-      { t: 'Lógica condicional', d: 'Perguntas que se adaptam à resposta anterior.' },
-      { t: 'Respostas organizadas', d: 'Cada envio chega estruturado, pronto para uso.' },
+      { t: 'Marca personalizável', d: 'Cores, logo e textos do formulário sob controle de quem está montando.' },
+      { t: 'Perguntas flexíveis', d: 'Texto, e-mail, telefone, múltipla escolha, caixas de seleção ou lista — cada uma podendo ser obrigatória ou não.' },
+      { t: 'Pronto pra publicar', d: 'Exporta uma página só, com envio das respostas por e-mail ou webhook.' },
     ],
   },
   {
