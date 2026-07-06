@@ -149,6 +149,7 @@ function setupReveal(scope) {
 
 const SEGMENTOS = [
   { produtoId: 'menu', titulo: 'Alimentação & Delivery', desc: 'Cardápio digital com pedido e gestão pra restaurantes e delivery.' },
+  { produtoId: 'stock', titulo: 'Varejo & Estoque', desc: 'Estoque multi-loja com vendas em tempo real pra redes com filiais.' },
   { produtoId: 'rh', titulo: 'Operações & Pessoas', desc: 'Ponto, banco de horas e solicitações pra times que saíram da planilha.' },
   { produtoId: 'forms', titulo: 'Captação & Eventos', desc: 'Formulários de inscrição e captação, animados e no ar em minutos.' },
 ];
@@ -175,7 +176,7 @@ function renderHome() {
       </div>
       <div class="eyebrow-word">Northn Software</div>
       <h1>Direção inteligente.<br><span class="grad">Resultados reais.</span></h1>
-      <p class="sub">Um núcleo, uma suíte em construção — já são 3 produtos reais em produção, cada um resolvendo uma parte real da operação.</p>
+      <p class="sub">Um núcleo, uma suíte em construção — já são 4 produtos reais em produção, cada um resolvendo uma parte real da operação.</p>
       <a href="#contato" class="cta-btn">${ICONS.mail} Falar com a gente</a>
     </div>
 
@@ -194,7 +195,7 @@ function renderHome() {
     </div>
 
     <div class="credibility reveal">
-      <div class="stat"><div class="num">3</div><div class="lbl">produtos reais em produção</div></div>
+      <div class="stat"><div class="num">4</div><div class="lbl">produtos reais em produção</div></div>
       <div class="stat"><div class="num">100%</div><div class="lbl">multi-tenant desde o primeiro dia</div></div>
       <div class="stat"><div class="num">24/7</div><div class="lbl">produtos no ar, sempre disponíveis</div></div>
     </div>
