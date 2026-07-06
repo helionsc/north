@@ -35,13 +35,14 @@ const PRODUTOS = [
   {
     id: 'stock', codigo: 'ST',
     nome: 'Northn Stock',
-    resumo: 'Estoque sob controle, sem surpresa no fim do mês.',
-    tagline: 'Saiba o que tem, o que falta e o que está parado.',
-    descricao: 'Controle de estoque pensado para operação: entradas, saídas e alertas de reposição antes que o item mais vendido acabe. Menos planilha, mais decisão.',
+    resumo: 'Estoque de todas as lojas, ao vivo, em uma tela.',
+    tagline: 'Saiba o que tem, onde tem e o que falta — loja por loja.',
+    descricao: 'Controle de estoque multi-loja: veja as filiais separadas ou tudo consolidado, encontre um produto em qualquer loja de qualquer cidade e acompanhe as vendas dando baixa no estoque em tempo real, direto na tela.',
+    demoUrl: 'https://estoque-lojas.vercel.app',
     features: [
-      { t: 'Alertas de reposição', d: 'Aviso automático antes de um item crítico zerar.' },
-      { t: 'Movimentações rastreadas', d: 'Toda entrada e saída registrada, com histórico consultável.' },
-      { t: 'Visão por categoria', d: 'Entenda o que gira rápido e o que está parado no estoque.' },
+      { t: 'Visão por loja e cidade', d: 'Filiais separadas ou consolidadas, com busca de produto por loja e cidade.' },
+      { t: 'Vendas em tempo real', d: 'Cada venda dá baixa no estoque e aparece ao vivo para quem estiver acompanhando.' },
+      { t: 'Alertas de reposição', d: 'Aviso automático antes de um item crítico zerar, com estoque mínimo por produto.' },
     ],
   },
   {
